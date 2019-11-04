@@ -10,7 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
 Route::get('/','ProyectoController@backHouse')->name('casa');
 
 Route::resource('discos','ProyectoController');
+
+Route::resource('famoso','FamosoController');
+
+Auth::routes();
 

@@ -17,10 +17,11 @@ class ProyectoController extends Controller
         return view('welcome');
     }
 
+    
     public function index(){
         //mostramos todos los registros 
         $registros = Proyecto::all();
-        return view('index',compact('registros'));
+        return view('disk.discoIndex',compact('registros'));
     }
 
 
@@ -31,7 +32,7 @@ class ProyectoController extends Controller
      */
     public function create(){
       
-      return view('create');
+      return view('disk.discoCreate');
     }
 
     /**
@@ -54,7 +55,7 @@ class ProyectoController extends Controller
      */
     public function show(Proyecto $disco)
     {
-        return view('show',compact('disco'));
+        return view('disk.discoShow',compact('disco'));
 
     }
 
@@ -67,7 +68,7 @@ class ProyectoController extends Controller
     public function edit(Proyecto $disco)
     {
         //regresamos la vista del formulario
-        return view('create',compact('disco'));
+        return view('disk.discoCreate',compact('disco'));
     }
 
     /**

@@ -9,15 +9,19 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
+  
+
+
+
   <body>
-   <br>
+
   <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 
                
-          <div class="card-body">
+        <div class="card-body">
           
          @if(isset($disco))  
           <form action="{{ route('discos.update', $disco->id)}}" method="POST">
@@ -30,12 +34,6 @@
                 @csrf <!--genera linea de codigo hidden _token-->
                  
                  <div class="form-group">
-                    <label for="formGroupExampleInput">Género</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" name="genero" value="{{ $disco->genero ?? ''}}">
-                 </div>
-
-
-                 <div class="form-group">
                     <label for="formGroupExampleInput">Año</label>
                     <input type="text" class="form-control" id="formGroupExampleInput" name="año" value="{{ $disco->año ?? ''}}">
                  </div>
@@ -46,7 +44,7 @@
                  </div>
 
                  <div class="form-group">
-                    <label for="formGroupExampleInput">Banda</label>
+                    <label for="formGroupExampleInput">Banda/Artista</label>
                     <input type="text" class="form-control" id="formGroupExampleInput" name="banda" value="{{ $disco->banda ?? ''}}">
                  </div>
 
