@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Famoso;
+use App\Disco;
 use Illuminate\Http\Request;
 
 class FamosoController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +16,8 @@ class FamosoController extends Controller
      */
     public function index()
     {
-        
+        $artistas = Famoso::paginate(7);
+        return view('artistas.artistaIndex',compact('artistas'));
     }
 
     /**
@@ -23,7 +26,7 @@ class FamosoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    {   
         return view('artistas.artistaCreate');
     }
 
@@ -35,9 +38,15 @@ class FamosoController extends Controller
      */
     public function store(Request $request)
     {
-        Famoso::create($request->all());
-        return redirect()->route('famoso.index');
+        
+        $request->validate([
+          'nombre'=> 'required|string|min:10|max:255',
+          'artistico'=> 'required|string|min:10|max:255',
+          'nacionalidad' => 'required|string|min:5|max:255',
+        ]);
 
+        Famoso::create($request->all());       
+        return redirect()->route('famoso.index')->with(['mensaje'=>'Famoso creado con exito','tipo'=>'alert-success']);
     }
 
     /**
@@ -48,7 +57,7 @@ class FamosoController extends Controller
      */
     public function show(Famoso $famoso)
     {
-        //
+        return view('artistas.artistaShow',compact('famoso'));
     }
 
     /**
@@ -58,8 +67,8 @@ class FamosoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Famoso $famoso)
-    {
-        //
+    {   
+        return view('artistas.artistaCreate',compact('famoso'));
     }
 
     /**
@@ -70,8 +79,17 @@ class FamosoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Famoso $famoso)
-    {
-        //
+    {   
+
+        $request->validate([
+          'nombre'=> 'required|string|min:10|max:255',
+          'artistico'=> 'required|string|min:10|max:255',
+          'nacionalidad' => 'required|string|min:5|max:255',
+        ]);
+        
+        $famoso->update($request->all());
+
+        return redirect()->route('famoso.show',$famoso->id)->with(['mensaje'=>'Famoso actualizado con exito','tipo'=>'alert-success']);
     }
 
     /**
@@ -82,6 +100,27 @@ class FamosoController extends Controller
      */
     public function destroy(Famoso $famoso)
     {
-        //
+        $famoso->delete();
+        return redirect()->route('famoso.index')->with(['mensaje'=>'Famoso eliminado con exito','tipo'=>'alert-warning']);
+    }
+
+
+    public function listaBorrados(){
+        
+        $trash = Famoso::onlyTrashed()->get();
+        return view('artistas.listDelete',compact('trash'));
+    }
+
+    public function hola($id){
+       
+       Famoso::withTrashed()->find($id)->restore();
+
+       //$back = Famoso::onlyTrashed()->find($id);
+
+       /*if(!is_null($back)){
+          $back->restore();
+       }*/
+
+     return view('artistas.vista');
     }
 }

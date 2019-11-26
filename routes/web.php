@@ -12,11 +12,29 @@
 */
 
 
-Route::get('/','ProyectoController@backHouse')->name('casa');
+Route::get('/', function () {
+    return view('layouts.main');
+});
 
-Route::resource('discos','ProyectoController');
+Route::get('/home', 'HomeController@index')->name('casa');
+
+Auth::routes();
+
+Route::middleware(['admin'])->group(function () {
+
+Route::resource('discos','DiscoController');
 
 Route::resource('famoso','FamosoController');
 
-Auth::routes();
+Route::resource('discografica','DiscograficaController');
+
+Route::resource('usuario','UserController')->only(['index']);
+
+Route::get('logico', 'FamosoController@listaBorrados')->name('borrado');
+
+Route::patch('/restore/{$id}', 'FamosoController@hola')->name('restaura');
+
+});
+
+
 

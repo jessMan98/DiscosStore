@@ -1,59 +1,86 @@
-<!DOCTYPE html>
-<html>
- <head>
-  <title>Music for you Motherfucker</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+@extends('layouts.principal')
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
-  
-  <body>
-
-      <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-             <div class="card">
-              <div class="card-body">
-              
-               <form action="{{route('famoso.store')}}" method="POST">
-                @csrf <!--genera linea de codigo hidden _token-->
-                 
-                 <div class="form-group">
-                    <label for="formGroupExampleInput">Nombre</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" name="nombre" value="">
-                 </div>
-                 
-                 <div class="form-group">
-                    <label for="formGroupExampleInput">Nombre Artistico</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" name="nombreArtistico" value="">
-                 </div>
-
-                 <div class="form-group">
-                    <label for="formGroupExampleInput">Nacionalidad</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" name="nacionalidad" value="">
-                 </div>
-
-                 <button type="submit" class="btn btn-primary">Enviar</button>
-                 <a href="{{ route('famoso.index')}}"class="btn btn-danger">Cancelar</a>
-               </form>
-
-              </div>
-             </div>
-            </div>
-        </div>
+@section('imagen')
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      
+      <div class="carousel-item active">
+        <img class="d-block w-100" src="{{asset('MusicStyle/images/news_2.jpg')}}" alt="First slide">
       </div>
 
+      <div class="carousel-item">
+          <img class="d-block w-100" src="{{asset('MusicStyle/images/news_1.jpg')}}" alt="Second slide">
+      </div>
+
+      <div class="carousel-item">
+        <img class="d-block w-100" src="{{asset('MusicStyle/images/news_3.jpg')}}" alt="Third slide">
+      </div>
+    </div>
     
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  
-  </body>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+</div>
+@endsection
 
+@section('titulo')
+ <div class="home_title" style="text-shadow: #B2A506  2px 4px;"> Creacion de Artistas</div>   
+@endsection
 
-</html>
+@section('main')
+    <div class="container">
+      <div class="row justify-content-center"style="margin: 20px auto;">
+        <div class="col-md-8">
+          <div class="card card text-white bg-dark mb-3" style="box-shadow: gray 5px 5px 10px;">
+            <div class="card-body text-white">
+              
+              @include('alerts.validacion')
+              
+              @if(isset($famoso))
+                <!--<form action="{{route('famoso.update', $famoso->id)}}" method="POST">
+                <input type="hidden" name="_method" value="PATCH">-->
+                {!! Form::model($famoso,['route'=> ['famoso.update',$famoso->id], 'method' => 'PATCH']) !!}
+              @else
+              <!-- <form action="{{route('famoso.store')}}" method="POST">-->
+                {!! Form::open(['route'=>'famoso.store']) !!}
+              @endif
+
+             <!-- @csrf genera linea de codigo hidden _token-->
+             <div class="form-group">
+                <!--<label for="formGroupExampleInput">Nombre</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" name="nombre" value="{{$famoso->nombre ?? ''}}">-->
+                {!! Form::label('nombre','Nombre') !!}
+                {!! Form::text('nombre',null,['class'=> $errors->has('nombre') ? 'form-control is-invalid': 'form-control']) !!}
+             </div>
+             
+             <div class="form-group">
+                <!--<label for="formGroupExampleInput">Nombre Artistico</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" name="artistico" value="{{ $famoso->artistico ?? ''}}">-->
+                {!! Form::label('artistico','Nombre Artistico') !!}
+                {!! Form::text('artistico',null,['class'=> $errors->has('artistico') ? 'form-control is-invalid' : 'form-control']) !!} 
+             </div>
+
+             <div class="form-group">
+                <!--<label for="formGroupExampleInput">Nacionalidad</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" name="nacionalidad" value="{{ $famoso->nacionalidad ?? ''}}">-->
+                {!! Form::label('nacionalidad','Nacionalidad') !!}
+                {!! Form::text('nacionalidad',null,['class'=> $errors->has('nacionalidad') ? 'form-control is-invalid' : 'form-control']) !!}
+             </div>
+
+             <button type="submit" class="btn btn-primary">Enviar</button>
+               <a href="{{ route('famoso.index')}}"class="btn btn-danger">Cancelar</a>
+             <!--</form>-->
+               {!! Form::close() !!}
+
+            </div>
+           </div>
+          </div>
+      </div>
+    </div>   
+
+@endsection

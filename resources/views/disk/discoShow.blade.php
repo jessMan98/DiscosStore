@@ -1,83 +1,60 @@
+@extends('layouts.principal')
 
-   <!DOCTYPE html>
-   <html>
-   <head>
-     <title></title>
+@section('imagen')
+  <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="{{asset('MusicStyle/images/featured_3.jpg')}}" data-speed="0.8">
+  </div>
+@endsection
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+@section('titulo')
+ <div class="home_title" style="text-shadow: #B2A506  2px 4px;">Modificacion</div>   
+@endsection
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+@section('main')
 
-   </head>
-  
+@include('alerts.mensaje')
 
- <h1 class="text-center"> <span>Modificacion de Datos</span></h1>
+  <div class="container" style="margin: 50px auto; width: 800px;">
+    <table class="table table-striped table-dark text-center">
+      <thead>
+          <tr>
+            <th scope="col">Discografica</th>
+            <th scope="col">Artista</th>
+            <th scope="col">Genero</th>
+            <th scope="col">Año</th>
+            <th scope="col">Album</th>  
+            <th scope="col">Formato</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <tr>
+            <td> {{ $disco->discografica->nDisquera }}</td>
+            <td>
+              @foreach($disco->famosos as $famoso)
+                <ul> {{ $famoso->artistico}} </ul>
+              @endforeach  
+            </td>
+            <td> {{ $disco->genero}}</td>
+            <td> {{ $disco->año }} </td>
+            <td> {{ $disco->album }} </td>
+            <td> {{ $disco->formato }} </td>
+            <td> 
+         
+              <a href="{{ route('discos.edit',$disco->id) }}" class="btn btn-primary btn-sm "> Editar </a>
 
-  <div class="container">
-
-      <table class="table table-striped table-dark">
-        <thead>
-            <tr>
-              
-              <th scope="col">Año</th>
-              <th scope="col">Album</th>
-              <th scope="col">Banda</th>
-              <th scope="col">Formato</th>
-              <th scope="col">Acciones</th>
-
-            </tr>
-          </thead>
-          
-          <tbody>
+              <form method="POST" action="{{ route('discos.destroy', $disco->id) }}" style="display: inline;">
+                  @method('DELETE') <!--<input type="hidden" name="_method" value="DELETE">-->
+                  @csrf
+                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Deseas Borrarlo?')">Borrar</button>
+              </form>
             
-            <tr>
-            
-              <td> {{ $disco->año }} </td>
-              <td> {{ $disco->album }} </td>
-              <td> {{ $disco->banda }} </td>
-              <td> {{ $disco->formato }} </td>
-              
-              <td> 
-           
-                <a href="{{ route('discos.edit',$disco->id) }}" class="btn btn-primary btn-sm "> Editar </a>
+            </td>
+          </tr> 
+        </tbody>
+     </table>
 
-                <form method="POST" action="{{ route('discos.destroy', $disco->id) }}" style="display: inline;">
-                    @method('DELETE') <!--<input type="hidden" name="_method" value="DELETE">-->
-                    @csrf
-                  <button type="submit" class="btn btn-sm btn-danger">Borrar</button>
-                </form>
-              
-              </td>
-            </tr> 
-
-          </tbody>
-       </table>
-
-        <a href="{{ route('discos.index') }}" class="btn btn-primary btn-sm"> Regresar</a>
+      <a href="{{ route('discos.index') }}" class="btn btn-primary btn-sm"> Regresar</a>
     </div>
 
-   
-    
-
-
-
-   
-   <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-
-   </body>
-   </html>
-
-
-
-
-
-
-
-
+@endsection
