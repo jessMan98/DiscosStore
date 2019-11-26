@@ -51,10 +51,17 @@
               {!! Form::model($disco,['route' => ['discos.update',$disco->id], 'method' => 'PATCH']) !!}
             @else
               <!-- <form  action="{{ route('discos.store') }}" method="POST"> -->
-              {!! Form::open(['route'=>'discos.store']) !!}  
+              {!! Form::open(['route'=>'discos.store', 'enctype' =>'multipart/form-data']) !!}  
             @endif    
                 <!--@csrf genera linea de codigo hidden _token-->
-                 
+            
+            <div class="form-group">
+              <!--<label for="formGroupExampleInput">Genero</label>
+              <input type="text" class="form-control" id="formGroupExampleInput" name="genero" value="{{ $disco->genero ?? ''}}">-->
+              {!! Form::label('imagen','Imagen') !!}
+              {!! Form::file('imagen',null,['class'=>'form-control']) !!}
+            </div>
+
             <div class="form-group">
               <!--<label for="formGroupExampleInput">Genero</label>
               <input type="text" class="form-control" id="formGroupExampleInput" name="genero" value="{{ $disco->genero ?? ''}}">-->

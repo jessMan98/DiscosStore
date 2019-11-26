@@ -16,6 +16,7 @@
 <table class="table table-striped table-dark text-center" style="margin: 15px auto;">
   <thead>
     <tr>
+      <th scope="col"></th>
       <th scope="col">Discografica</th>
       <th scope="col">Artista</th>
       <th scope="col">Genero</th>
@@ -29,6 +30,9 @@
   <tbody>
     @foreach($registros as $disco)
     <tr>
+       
+       <td> <img class="card-img-top" style="width: 100px;" src="archivos/{{ $disco->imagen}}"></td>
+          
       <td> {{ $disco->discografica->nDisquera }}</td>
       <td> 
         <ul>
