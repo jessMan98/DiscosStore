@@ -47,9 +47,16 @@ class DiscoController extends Controller
          'album'=> 'required|string|min:3|max:255',
          'formato'=> 'required|string|min:6|max:255',
         ]);
+        
+        if($request->hasFile('imagen')){
+            $file = $request->file('imagen');
+            $name = time().$file->getClientOriginalName(); //fecha actual con nombre del archivo
+            $file->move(public_path().'/archivos/',$name); // asignamos la direccion y creamos carpeta
+        }        
+
 
         $disco = new Disco([
-          //'discografica_id' => $request->discografica_id,
+          'imagen'=> $name,
           'genero'=> $request->genero,
           'año'=> $request->año,
           'album'=> $request->album,
