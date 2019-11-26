@@ -111,16 +111,10 @@ class FamosoController extends Controller
         return view('artistas.listDelete',compact('trash'));
     }
 
-    public function hola($id){
+    /*public function restore($id){
        
-       Famoso::withTrashed()->find($id)->restore();
+      $trash = Famoso::onlyTrashed()->where('id',$id)->restore();
 
-       //$back = Famoso::onlyTrashed()->find($id);
-
-       /*if(!is_null($back)){
-          $back->restore();
-       }*/
-
-     return view('artistas.vista');
-    }
+      return redirect()->route('borrado',compact('trash'));
+    }*/
 }
