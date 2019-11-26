@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Disco extends Model
 {
   
-   protected $fillable = ['genero','año','album','formato'];
+   protected $fillable = ['imagen','genero','año','album','formato'];
    
    //un disco pertenece a muchos artistas
    public function famosos(){
