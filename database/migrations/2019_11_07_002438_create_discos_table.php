@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 class CreateDiscosTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Run the migrations.  
 
      * @return void
      */
@@ -15,6 +15,7 @@ class CreateDiscosTable extends Migration
     {
         Schema::create('discos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('imagen');
             $table->unsignedBigInteger('discografica_id'); //relacion con discografica
             $table->string('genero');
             $table->integer('año');
