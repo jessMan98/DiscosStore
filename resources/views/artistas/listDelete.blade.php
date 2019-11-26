@@ -6,14 +6,14 @@
 @endsection
 
 @section('titulo')
- <div class="home_title" style="text-shadow: #B2A506  2px 4px;">Aristas Eliminados</div>   
+ <div class="home_title" style="text-shadow: #B2A506  2px 4px;">Artistas Eliminados</div>   
 @endsection
 
 
 @section('main')
  
 
- <table class="table table-striped table-dark text-center" style="margin: 15px auto;">
+ <table class="table table-striped table-dark text-center" style="margin: 15px auto; width: 900px;">
     <thead>
       <tr>    
         <th scope="col">Nombre</th>
@@ -24,14 +24,14 @@
     </thead>
       
     <tbody>
-     @foreach($trash as $famoso)
+     @foreach($trash as $basura)
         <tr>
-          <td> {{$famoso->nombre}} </td>
-          <td> {{$famoso->artistico}} </td>
-          <td> {{$famoso->nacionalidad}} </td>
+          <td> {{$basura->nombre}} </td>
+          <td> {{$basura->artistico}} </td>
+          <td> {{$basura->nacionalidad}} </td>
           <td>
            
-           <a href="{{ route('restaura',$famoso->id) }}" class="btn btn-sm btn-success">Restaurar</a> 
+           <!--<a href="{{ route('restaura',$basura->id) }}" class="btn btn-sm btn-success">Restaurar</a>--> 
            
           </td>          
         </tr>
@@ -39,6 +39,6 @@
     </tbody>
   </table>
 
-  <a href="{{ route('famoso.index') }}" class="btn btn-sm btn-info">Regresar</a> 
+  <a href="{{ route('famoso.index') }}" class="btn btn-sm btn-info" style="margin-left: 100px; margin-bottom: 10px;">Regresar</a> 
 
   @endsection
