@@ -31,7 +31,7 @@
           <td> {{$basura->nacionalidad}} </td>
           <td>
            
-           <!--<a href="{{ route('restaura',$basura->id) }}" class="btn btn-sm btn-success">Restaurar</a>--> 
+           <a href="{{ route('restaura',$basura->id) }}" class="btn btn-sm btn-success">Restaurar</a> 
            
           </td>          
         </tr>

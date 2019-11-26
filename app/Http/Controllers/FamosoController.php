@@ -107,14 +107,13 @@ class FamosoController extends Controller
 
     public function listaBorrados(){
         
-        $trash = Famoso::onlyTrashed()->get();
+        $trash = Famoso::onlyTrashed()->get(); // muestra los registros eliminados
         return view('artistas.listDelete',compact('trash'));
     }
 
-    /*public function restore($id){
+    public function restore($id){
        
-      $trash = Famoso::onlyTrashed()->where('id',$id)->restore();
-
-      return redirect()->route('borrado',compact('trash'));
-    }*/
+      Famoso::onlyTrashed()->find($id)->restore();// restauramos registro eliminado logicamente
+      return redirect()->route('famoso.index');
+    }
 }

@@ -32,7 +32,7 @@ Route::resource('usuario','UserController')->only(['index']);
 
 Route::get('logico', 'FamosoController@listaBorrados')->name('borrado');
 
-//Route::get('restore/{$id}', 'FamosoController@restore')->name('restaura');
+Route::get('restore/{id}', 'FamosoController@restore')->name('restaura');
 
 });
 
