@@ -16,23 +16,21 @@
 <table class="table table-striped table-dark text-center" style="margin: 15px auto;">
   <thead>
     <tr>
-      <th scope="col"></th>
-      <th scope="col">Discografica</th>
-      <th scope="col">Artista</th>
-      <th scope="col">Genero</th>
-      <th scope="col">Album</th>
-      <th scope="col">Año</th>
-      <th scope="col">Formato</th>
-      <th scope="col">Acciones</th>
+      <th scope="col" style="text-shadow: #B2A506  1px 1px">Imagen</th>
+      <th scope="col" style="text-shadow: #B2A506  1px 1px">Discografica</th>
+      <th scope="col" style="text-shadow: #B2A506  1px 1px">Artista</th>
+      <th scope="col" style="text-shadow: #B2A506  1px 1px">Genero</th>
+      <th scope="col" style="text-shadow: #B2A506  1px 1px">Album</th>
+      <th scope="col" style="text-shadow: #B2A506  1px 1px">Año</th>
+      <th scope="col" style="text-shadow: #B2A506  1px 1px">Formato</th>
+      <th scope="col" style="text-shadow: #B2A506 1px 1px">Acciones</th>
     </tr>
   </thead>
 
   <tbody>
     @foreach($registros as $disco)
-    <tr>
-       
-       <td> <img class="card-img-top" style="width: 100px;" src="archivos/{{ $disco->imagen}}"></td>
-          
+    <tr> 
+      <td> <img  style="width: 100px;" src="{{ asset('archivos').'/'.$disco->imagen }}"></td>    
       <td> {{ $disco->discografica->nDisquera }}</td>
       <td> 
         <ul>

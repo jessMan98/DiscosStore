@@ -13,22 +13,25 @@
 
 @include('alerts.mensaje')
 
-  <div class="container" style="margin: 50px auto; width: 800px;">
+  <div class="container" style="margin: 50px auto; width: 950px;">
     <table class="table table-striped table-dark text-center">
       <thead>
           <tr>
-            <th scope="col">Discografica</th>
-            <th scope="col">Artista</th>
-            <th scope="col">Genero</th>
-            <th scope="col">Año</th>
-            <th scope="col">Album</th>  
-            <th scope="col">Formato</th>
-            <th scope="col">Acciones</th>
+
+            <!--<th scope="col" style="text-shadow: #B2A506  1px 1px">Imagen</th>-->
+            <th scope="col" style="text-shadow: #B2A506 1px 1px">Discografica</th>
+            <th scope="col" style="text-shadow: #B2A506 1px 1px">Artista</th>
+            <th scope="col" style="text-shadow: #B2A506 1px 1px">Genero</th>
+            <th scope="col" style="text-shadow: #B2A506 1px 1px">Año</th>
+            <th scope="col" style="text-shadow: #B2A506 1px 1px">Album</th>  
+            <th scope="col" style="text-shadow: #B2A506 1px 1px">Formato</th>
+            <th scope="col" style="text-shadow: #B2A506 1px 1px">Acciones</th>
           </tr>
         </thead>
         
         <tbody>
           <tr>
+            <td> <img  style="width: 100px;" src="{{ asset('archivos').'/'.$disco->imagen }}"></td>
             <td> {{ $disco->discografica->nDisquera }}</td>
             <td>
               @foreach($disco->famosos as $famoso)
