@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.principal')
 
-@section('content')
+@section('main')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
+                <div class="card-header text-white bg-dark mb-3 text-center text-uppercase">{{ __('Verify Your Email Address') }}</div>
 
                 <div class="card-body">
                     @if (session('resent'))

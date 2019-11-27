@@ -11,6 +11,6 @@ class FamososSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Famoso::class,20)->create();
+        factory(App\Famoso::class,30)->create();
     }
 }
