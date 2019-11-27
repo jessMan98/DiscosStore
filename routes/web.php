@@ -18,9 +18,9 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index')->name('casa');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
-Route::middleware(['admin'])->group(function () {
+Route::middleware(['admin','verified'])->group(function () {
 
 Route::resource('discos','DiscoController');
 
