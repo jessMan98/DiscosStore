@@ -27,7 +27,7 @@ class AdminMiddleware
                 return $next($request);
             }
 
-            return redirect()->route('login'); 
+            return redirect()->route('casa')->with(['fatal' => 'Lo sentimos :/ no tienes permisos de Administrador ', 'tipo' => 'alert-warning']); 
         }
 
     }
