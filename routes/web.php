@@ -20,6 +20,10 @@ Route::get('/home', 'HomeController@index')->name('casa');
 
 Auth::routes(['verify' => true]);
 
+Route::get('catalogo','DiscoController@catalogoDisco')->name('cat');
+
+Route::get('formato','DiscoController@returnJson')->name('api');
+
 Route::middleware(['admin','verified'])->group(function () {
 
 Route::resource('discos','DiscoController');
