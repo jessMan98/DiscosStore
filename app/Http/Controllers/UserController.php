@@ -15,6 +15,5 @@ class UserController extends Controller
      return view('usuarios.uIndex',compact('users'));
 
    }
-
-
+   
 }

@@ -16,7 +16,7 @@
 
           <ul class="d-flex flex-row align-items-center justify-content-start">
            
-            <li><a href="">Catalogo</a></li>
+            <li><a href="{{ route('cat') }} ">Catalogo</a></li>
             <li><a href="{{ route('discos.index') }}">Discos</a></li>
             <li><a href="{{ route('famoso.index') }}">Artistas</a></li>
             <li><a href="{{ route('discografica.index')}}">Discograficas</a></li>

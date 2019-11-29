@@ -14,6 +14,13 @@ class DiscoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function catalogoDisco(){
+       $catalogo = Disco::with('discografica','famosos')->get();
+       return view('Catalogo.catalogoIndex',compact('catalogo'));
+
+    }
+
     public function index()
     {
        $registros = Disco::with('discografica','famosos')->get();
@@ -90,7 +97,8 @@ class DiscoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Disco $disco)
-    {    
+    {   
+
         $disquera = Discografica::pluck('nDisquera','id');
         $artistas = Famoso::pluck('artistico','id');
 
@@ -129,5 +137,11 @@ class DiscoController extends Controller
     {
         $disco->delete();
         return redirect()->route('discos.index')->with(['mensaje'=> 'Disco eliminado con exito :D', 'tipo' => 'alert-warning']);
+    }
+
+    public function returnJson(){
+        $disco = Disco::get()->toJson();
+        return $disco;
+
     }
 }
