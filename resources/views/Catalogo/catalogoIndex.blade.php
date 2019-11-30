@@ -65,8 +65,9 @@
       <td> {{ $disco->año }} </td>
       <td> {{ $disco->formato }} </td>
       <td>
-        <button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
-      </td>          
+        <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+  Popover on left
+</button>         
     </tr>
     @endforeach
   </tbody>
