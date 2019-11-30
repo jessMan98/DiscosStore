@@ -40,7 +40,7 @@
       <th scope="col">Role</th>
       <th scope="col">Nombre</th>
       <th scope="col">Correo</th>
-      <th scope="col">Acciones</th>
+
     </tr>
   </thead>
   <tbody>
@@ -52,11 +52,7 @@
         @endforeach
       </td>
       <td> {{ $usuario->name }}</td>
-      <td> {{ $usuario->email}} </td>
- 
-      <td>
-        <a href="" class="btn btn-sm btn-success">Enviar Notificacion</a>  
-      </td>          
+      <td> {{ $usuario->email}} </td>       
     </tr>
     @endforeach
   </tbody>

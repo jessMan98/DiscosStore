@@ -45,7 +45,6 @@
       <th scope="col" style="text-shadow: #B2A506  1px 1px">Album</th>
       <th scope="col" style="text-shadow: #B2A506  1px 1px">Año</th>
       <th scope="col" style="text-shadow: #B2A506  1px 1px">Formato</th>
-      <th scope="col" style="text-shadow: #B2A506 1px 1px">Acciones</th>
     </tr>
   </thead>
 
@@ -64,10 +63,7 @@
       <td> {{ $disco->album }} </td>
       <td> {{ $disco->año }} </td>
       <td> {{ $disco->formato }} </td>
-      <td>
-        <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-  Popover on left
-</button>         
+      <td>         
     </tr>
     @endforeach
   </tbody>
